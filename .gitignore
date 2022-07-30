@@ -3,3 +3,5 @@
 .env.dev
 
 node_modules
+
+.vscode
