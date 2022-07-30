@@ -4,8 +4,14 @@
   "description": "GraphQL and node.js server using apollo",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Sammy T",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server": "^3.10.0",
+    "graphql": "^16.5.0",
+    "nodemon": "^2.0.19"
+  }
 }
