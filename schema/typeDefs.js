@@ -6,6 +6,7 @@
  * https://www.apollographql.com/docs/apollo-server/getting-started#step-4-define-your-data-set
  */
 const { gql } = require("apollo-server");
+
 const typeDefs = gql`
   type User {
     id: ID!
@@ -13,6 +14,7 @@ const typeDefs = gql`
     nationality: String!
     username: String!
     email: String!
+    address: Object
   }
   # The "Query" type is special: it lists all of the available queries that
   # clients can execute, along with the return type for each.
@@ -20,3 +22,5 @@ const typeDefs = gql`
     users: [User!]!
   }
 `;
+
+module.exports = typeDefs;
