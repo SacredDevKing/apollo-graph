@@ -5,6 +5,7 @@ const UsersList = [
     nationality: "United States",
     username: "Bret",
     email: "Sincere@april.biz",
+    age: 27,
     address: {
       street: "Kulas Light",
       suite: "Apt. 556",
@@ -29,6 +30,7 @@ const UsersList = [
     nationality: "Canada",
     username: "Antonette",
     email: "Shanna@melissa.tv",
+    age: 37,
     address: {
       street: "Victor Plains",
       suite: "Suite 879",
@@ -53,6 +55,7 @@ const UsersList = [
     nationality: "Chile",
     username: "Samantha",
     email: "Nathan@yesenia.net",
+    age: 65,
     address: {
       street: "Douglas Extension",
       suite: "Suite 847",
@@ -77,6 +80,7 @@ const UsersList = [
     nationality: "Geramany",
     username: "Karianne",
     email: "Julianne.OConner@kory.org",
+    age: 21,
     address: {
       street: "Hoeger Mall",
       suite: "Apt. 692",
@@ -101,6 +105,7 @@ const UsersList = [
     nationality: "United States",
     username: "Kamren",
     email: "Lucio_Hettinger@annie.ca",
+    age: 85,
     address: {
       street: "Skiles Walks",
       suite: "Suite 351",
@@ -125,6 +130,7 @@ const UsersList = [
     nationality: "Armenia",
     username: "Leopoldo_Corkery",
     email: "Karley_Dach@jasper.info",
+    age: 35,
     address: {
       street: "Norberto Crossing",
       suite: "Apt. 950",
@@ -149,6 +155,7 @@ const UsersList = [
     nationality: "Argentina",
     username: "Elwyn.Skiles",
     email: "Telly.Hoeger@billy.biz",
+    age: 54,
     address: {
       street: "Rex Trail",
       suite: "Suite 280",
@@ -165,78 +172,6 @@ const UsersList = [
       name: "Johns Group",
       catchPhrase: "Configurable multimedia task-force",
       bs: "generate enterprise e-tailers",
-    },
-  },
-  {
-    id: 8,
-    name: "Nicholas Runolfsdottir V",
-    nationality: "Guam",
-    username: "Maxime_Nienow",
-    email: "Sherwood@rosamond.me",
-    address: {
-      street: "Ellsworth Summit",
-      suite: "Suite 729",
-      city: "Aliyaview",
-      zipcode: "45169",
-      geo: {
-        lat: "-14.3990",
-        lng: "-120.7677",
-      },
-    },
-    phone: "586.493.6943 x140",
-    website: "jacynthe.com",
-    company: {
-      name: "Abernathy Group",
-      catchPhrase: "Implemented secondary concept",
-      bs: "e-enable extensible e-tailers",
-    },
-  },
-  {
-    id: 9,
-    name: "Glenna Reichert",
-    nationality: "Australia",
-    username: "Delphine",
-    email: "Chaim_McDermott@dana.io",
-    address: {
-      street: "Dayna Park",
-      suite: "Suite 449",
-      city: "Bartholomebury",
-      zipcode: "76495-3109",
-      geo: {
-        lat: "24.6463",
-        lng: "-168.8889",
-      },
-    },
-    phone: "(775)976-6794 x41206",
-    website: "conrad.com",
-    company: {
-      name: "Yost and Sons",
-      catchPhrase: "Switchable contextually-based project",
-      bs: "aggregate real-time technologies",
-    },
-  },
-  {
-    id: 10,
-    name: "Clementina DuBuque",
-    nationality: "Japan",
-    username: "Moriah.Stanton",
-    email: "Rey.Padberg@karina.biz",
-    address: {
-      street: "Kattie Turnpike",
-      suite: "Suite 198",
-      city: "Lebsackbury",
-      zipcode: "31428-2261",
-      geo: {
-        lat: "-38.2386",
-        lng: "57.2232",
-      },
-    },
-    phone: "024-648-3804",
-    website: "ambrose.net",
-    company: {
-      name: "Hoeger LLC",
-      catchPhrase: "Centralized empowering task-force",
-      bs: "target end-to-end models",
     },
   },
 ];

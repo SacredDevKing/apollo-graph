@@ -14,7 +14,7 @@ const typeDefs = gql`
     nationality: String!
     username: String!
     email: String!
-    address: Object
+    age: Int!
   }
   # The "Query" type is special: it lists all of the available queries that
   # clients can execute, along with the return type for each.
