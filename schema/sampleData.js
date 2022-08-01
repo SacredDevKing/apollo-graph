@@ -2,10 +2,20 @@ const UsersList = [
   {
     id: 1,
     name: "Leanne Graham",
-    nationality: "United States",
+    country: "USA",
     username: "Bret",
     email: "Sincere@april.biz",
     age: 27,
+    friends: [
+      {
+        id: 4,
+        name: "Patricia Lebsack",
+        country: "GERMANY",
+        username: "Karianne",
+        email: "Julianne.OConner@kory.org",
+        age: 21,
+      },
+    ],
     address: {
       street: "Kulas Light",
       suite: "Apt. 556",
@@ -27,7 +37,7 @@ const UsersList = [
   {
     id: 2,
     name: "Ervin Howell",
-    nationality: "Canada",
+    country: "CANADA",
     username: "Antonette",
     email: "Shanna@melissa.tv",
     age: 37,
@@ -52,7 +62,7 @@ const UsersList = [
   {
     id: 3,
     name: "Clementine Bauch",
-    nationality: "Chile",
+    country: "CHILE",
     username: "Samantha",
     email: "Nathan@yesenia.net",
     age: 65,
@@ -77,10 +87,20 @@ const UsersList = [
   {
     id: 4,
     name: "Patricia Lebsack",
-    nationality: "Geramany",
+    country: "GERMANY",
     username: "Karianne",
     email: "Julianne.OConner@kory.org",
     age: 21,
+    friends: [
+      {
+        id: 4,
+        name: "Patricia Lebsack",
+        country: "GERMANY",
+        username: "Karianne",
+        email: "Julianne.OConner@kory.org",
+        age: 21,
+      },
+    ],
     address: {
       street: "Hoeger Mall",
       suite: "Apt. 692",
@@ -102,7 +122,7 @@ const UsersList = [
   {
     id: 5,
     name: "Chelsey Dietrich",
-    nationality: "United States",
+    country: "USA",
     username: "Kamren",
     email: "Lucio_Hettinger@annie.ca",
     age: 85,
@@ -127,7 +147,7 @@ const UsersList = [
   {
     id: 6,
     name: "Mrs. Dennis Schulist",
-    nationality: "Armenia",
+    country: "ARMENIA",
     username: "Leopoldo_Corkery",
     email: "Karley_Dach@jasper.info",
     age: 35,
@@ -152,10 +172,20 @@ const UsersList = [
   {
     id: 7,
     name: "Kurtis Weissnat",
-    nationality: "Argentina",
+    country: "ARGENTINA",
     username: "Elwyn.Skiles",
     email: "Telly.Hoeger@billy.biz",
     age: 54,
+    friends: [
+      {
+        id: 6,
+        name: "Mrs. Dennis Schulist",
+        country: "ARMENIA",
+        username: "Leopoldo_Corkery",
+        email: "Karley_Dach@jasper.info",
+        age: 35,
+      },
+    ],
     address: {
       street: "Rex Trail",
       suite: "Suite 280",

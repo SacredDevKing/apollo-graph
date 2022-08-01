@@ -11,15 +11,27 @@ const typeDefs = gql`
   type User {
     id: ID!
     name: String!
-    nationality: String!
+    country: Country!
     username: String!
     email: String!
     age: Int!
+    friends: [User!]
   }
+
   # The "Query" type is special: it lists all of the available queries that
   # clients can execute, along with the return type for each.
   type Query {
     users: [User!]!
+    user(id: ID!): User!
+  }
+
+  enum Country {
+    USA
+    CANADA
+    CHILE
+    GERMANY
+    ARMENIA
+    ARGENTINA
   }
 `;
 
