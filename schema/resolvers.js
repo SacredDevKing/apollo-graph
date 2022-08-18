@@ -8,12 +8,21 @@
  * database or a third-party API.
  */
 const UsersList = require("./sampleData");
+const _ = require("lodash");
 
 const resolvers = {
   Query: {
-    users() {
+    users: () => {
       // In place of a db call for now
       return UsersList;
+    },
+    user: (parent, args) => {
+      // Logic to return specific user by id
+      console.log(parent);
+      const id = args.id;
+      const user = _.find(UsersList, { id: Number(id) });
+
+      return user;
     },
   },
 };
