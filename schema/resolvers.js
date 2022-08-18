@@ -8,6 +8,7 @@
  * database or a third-party API.
  */
 const UsersList = require("./sampleData");
+const MoviesList = require("./MoviesList");
 const _ = require("lodash");
 
 const resolvers = {
@@ -23,6 +24,14 @@ const resolvers = {
       const user = _.find(UsersList, { id: Number(id) });
 
       return user;
+    },
+    movies: () => {
+      return MoviesList;
+    },
+    movie: (parent, args) => {
+      const title = args.name;
+
+      return _.find(MoviesList, { title });
     },
   },
 };

@@ -18,11 +18,21 @@ const typeDefs = gql`
     friends: [User!]
   }
 
+  type Movie {
+    id: ID!
+    title: String!
+    releaseYear: Int!
+    comingSoon: Boolean
+    awards: String
+  }
+
   # The "Query" type is special: it lists all of the available queries that
   # clients can execute, along with the return type for each.
   type Query {
     users: [User!]!
     user(id: ID!): User!
+    movies: [Movie!]!
+    movie(title: String!): Movie
   }
 
   enum Country {
