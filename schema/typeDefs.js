@@ -16,6 +16,7 @@ const typeDefs = gql`
     email: String!
     age: Int!
     friends: [User!]
+    favoriteMovies: [Movie]
   }
 
   type Movie {
@@ -24,6 +25,7 @@ const typeDefs = gql`
     releaseYear: Int!
     awards: String
     genre: String
+    language: String!
   }
 
   # The "Query" type is special: it lists all of the available queries that

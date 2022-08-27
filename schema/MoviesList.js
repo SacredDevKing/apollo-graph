@@ -15,7 +15,7 @@ const MoviesList = [
     Writer: "James Cameron",
     Actors: "Sam Worthington, Zoe Saldana, Sigourney Weaver, Stephen Lang",
     Plot: "A paraplegic marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home.",
-    Language: "English, Spanish",
+    language: "English, Spanish",
     Country: "USA, UK",
     awards: "Won 3 Oscars. Another 80 wins & 121 nominations.",
     Poster:
@@ -48,7 +48,7 @@ const MoviesList = [
     Actors:
       "Will Smith, Alice Braga, Charlie Tahan, Salli Richardson-Whitfield",
     Plot: "releaseYears after a plague kills most of humanity and transforms the rest into monsters, the sole survivor in New York City struggles valiantly to find a cure.",
-    Language: "English",
+    language: "English",
     Country: "USA",
     awards: "9 wins & 21 nominations.",
     Poster:
@@ -79,7 +79,7 @@ const MoviesList = [
       "Zack Snyder (screenplay), Kurt Johnstad (screenplay), Michael Gordon (screenplay), Frank Miller (graphic novel), Lynn Varley (graphic novel)",
     Actors: "Gerard Butler, Lena Headey, Dominic West, David Wenham",
     Plot: "King Leonidas of Sparta and a force of 300 men fight the Persians at Thermopylae in 480 B.C.",
-    Language: "English",
+    language: "English",
     Country: "USA",
     awards: "16 wins & 42 nominations.",
     Poster:
@@ -108,7 +108,7 @@ const MoviesList = [
     Writer: "Joss Whedon (screenplay), Zak Penn (story), Joss Whedon (story)",
     Actors: "Robert Downey Jr., Chris Evans, Mark Ruffalo, Chris Hemsworth",
     Plot: "Earth's mightiest heroes must come together and learn to fight as a team if they are to stop the mischievous Loki and his alien army from enslaving humanity.",
-    Language: "English, Russian",
+    language: "English, Russian",
     Country: "USA",
     awards: "Nominated for 1 Oscar. Another 34 wins & 75 nominations.",
     Poster:
@@ -139,7 +139,7 @@ const MoviesList = [
     Writer: "Terence Winter (screenplay), Jordan Belfort (book)",
     Actors: "Leonardo DiCaprio, Jonah Hill, Margot Robbie, Matthew McConaughey",
     Plot: "Based on the true story of Jordan Belfort, from his rise to a wealthy stock-broker living the high life to his fall involving crime, corruption and the federal government.",
-    Language: "English, French",
+    language: "English, French",
     Country: "USA",
     awards: "Nominated for 5 Oscars. Another 35 wins & 154 nominations.",
     Poster:
@@ -170,7 +170,7 @@ const MoviesList = [
     Writer: "Jonathan Nolan, Christopher Nolan",
     Actors: "Ellen Burstyn, Matthew McConaughey, Mackenzie Foy, John Lithgow",
     Plot: "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
-    Language: "English",
+    language: "English",
     Country: "USA, UK",
     awards: "Won 1 Oscar. Another 39 wins & 134 nominations.",
     Poster:
@@ -201,7 +201,7 @@ const MoviesList = [
     Writer: "David Benioff, D.B. Weiss",
     Actors: "Peter Dinklage, Lena Headey, Emilia Clarke, Kit Harington",
     Plot: "While a civil war brews between several noble families in Westeros, the children of the former rulers of the land attempt to rise up to power. Meanwhile a forgotten race, bent on destruction, plans to return after thousands of releaseYears in the North.",
-    Language: "English",
+    language: "English",
     Country: "USA, UK",
     awards: "Won 1 Golden Globe. Another 185 wins & 334 nominations.",
     Poster:
@@ -233,7 +233,7 @@ const MoviesList = [
     Writer: "Michael Hirst",
     Actors: "Travis Fimmel, Clive Standen, Gustaf Skarsgård, Katheryn Winnick",
     Plot: "The world of the Vikings is brought to life through the journey of Ragnar Lothbrok, the first Viking to emerge from Norse legend and onto the pages of history - a man on the edge of myth.",
-    Language: "English, Old English, Norse, Old, Latin",
+    language: "English, Old English, Norse, Old, Latin",
     Country: "Ireland, Canada",
     awards:
       "Nominated for 7 Primetime Emmys. Another 17 wins & 49 nominations.",
@@ -266,7 +266,7 @@ const MoviesList = [
     Writer: "Bruno Heller",
     Actors: "Ben McKenzie, Donal Logue, David Mazouz, Sean Pertwee",
     Plot: "The story behind Detective James Gordon's rise to prominence in Gotham City in the releaseYears before Batman's arrival.",
-    Language: "English",
+    language: "English",
     Country: "USA",
     awards: "Nominated for 4 Primetime Emmys. Another 3 wins & 22 nominations.",
     Poster:
@@ -298,7 +298,7 @@ const MoviesList = [
     Writer: "Courtney Kemp Agboh",
     Actors: "Omari Hardwick, Joseph Sikora, Andy Bean, Lela Loren",
     Plot: 'James "Ghost" St. Patrick, a wealthy New York night club owner who has it all, catering for the city\'s elite and dreaming big, lives a double life as a drug kingpin.',
-    Language: "English",
+    language: "English",
     Country: "USA",
     awards: "1 win & 6 nominations.",
     Poster:

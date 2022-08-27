@@ -7,7 +7,7 @@
  * It can populate that data in any way you define, such as by fetching data from a back-end
  * database or a third-party API.
  */
-const UsersList = require('./sampleData');
+const UsersList = require('./userData');
 const MoviesList = require('./MoviesList');
 const _ = require('lodash');
 
@@ -30,6 +30,15 @@ const resolvers = {
     },
     movies: () => {
       return MoviesList;
+    },
+  },
+  User: {
+    favoriteMovies: (parent, args) => {
+      // Get a users favorite movies if any.
+      return _.filter(
+        MoviesList,
+        (movie) => movie.releaseYear >= 2010 && movie.releaseYear <= 2012
+      );
     },
   },
 };
