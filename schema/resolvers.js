@@ -13,24 +13,23 @@ const _ = require('lodash');
 
 const resolvers = {
   Query: {
+    // User resolvers
     users: () => {
-      // In place of a db call for now
       return UsersList;
     },
     user: (parent, args) => {
-      // Logic to return specific user by id
-      const id = args.id;
-      const user = _.find(UsersList, { id: Number(id) });
+      const id = Number(args.id);
 
-      return user;
+      return _.find(UsersList, { id });
+    },
+    // Movie Resolvers
+    movie: (parent, args) => {
+      const title = args.title;
+
+      return _.find(MoviesList, { title });
     },
     movies: () => {
       return MoviesList;
-    },
-    movie: (parent, args) => {
-      const title = args.name;
-
-      return _.find(MoviesList, { title });
     },
   },
 };

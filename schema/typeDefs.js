@@ -5,7 +5,7 @@
  *
  * https://www.apollographql.com/docs/apollo-server/getting-started#step-4-define-your-data-set
  */
-const { gql } = require("apollo-server");
+const { gql } = require('apollo-server');
 
 const typeDefs = gql`
   type User {
@@ -22,8 +22,8 @@ const typeDefs = gql`
     id: ID!
     title: String!
     releaseYear: Int!
-    comingSoon: Boolean
     awards: String
+    genre: String
   }
 
   # The "Query" type is special: it lists all of the available queries that
