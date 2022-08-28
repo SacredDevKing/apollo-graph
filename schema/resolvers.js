@@ -53,6 +53,20 @@ const resolvers = {
 
       return user;
     },
+    updateUsername: (_, args) => {
+      const { id, newUsername } = args.input;
+      let updatedUser;
+      UsersList.forEach((user) => {
+        if (user.id !== id) throw Error('Cannot update this user');
+
+        if (user.id === Number(id)) {
+          user.username = newUsername;
+          updatedUser = user;
+        }
+      });
+
+      return updatedUser;
+    },
   },
 };
 
