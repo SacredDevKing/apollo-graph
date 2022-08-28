@@ -41,6 +41,19 @@ const resolvers = {
       );
     },
   },
+
+  Mutation: {
+    createUser: (parent, args) => {
+      // Simulate adding row to DB
+      const user = args.input;
+      const lastUserId = UsersList[UsersList.length - 1].id;
+      user.id = lastUserId + 1;
+
+      UsersList.push(user);
+
+      return user;
+    },
+  },
 };
 
 module.exports = resolvers;
