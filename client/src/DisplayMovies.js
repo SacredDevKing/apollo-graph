@@ -1,9 +1,28 @@
-import { gql, useQuery } from '@apollo/client';
+import { useState } from 'react';
+import { gql, useQuery, useLazyQuery } from '@apollo/client';
 
 function DisplayMovies() {
+  const [movieSearch, setMovieSearch] = useState('');
+  const [fetchMovie, { data: movieSearchData, error: movieError }] =
+    useLazyQuery();
+
   const GET_ALL_MOVIES = gql`
     query getAllMovies {
       movies {
+        id
+        title
+        releaseYear
+        genre
+        awards
+        language
+      }
+    }
+  `;
+
+  // Grab single movie query
+  const GET_MOVIE_BY_TITLE = gql`
+    query GetMovie($title: String!) {
+      movie(title: $title) {
         id
         title
         releaseYear
@@ -34,6 +53,16 @@ function DisplayMovies() {
           </div>
         );
       })}
+
+      <div>
+        <input
+          type='text'
+          placeholder='Interstellar...'
+          onChange={(e) => setMovieSearch(e.target.value)}
+        />
+        <button onClick={fetchMovie}>Fetch Data</button>
+        <div></div>
+      </div>
     </div>
   );
 }
