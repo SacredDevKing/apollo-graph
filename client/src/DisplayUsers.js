@@ -20,11 +20,12 @@ function DisplayUsers() {
 
   return (
     <div>
+      <h1>USERS LIST</h1>
       {data &&
         data.users.map((user) => {
           return (
             <div key={user.id}>
-              <h1>{user.name}</h1>
+              <h2>{user.name}</h2>
               <p>Age: {user.age}</p>
               <p>Email: {user.email}</p>
               <p>Username: {user.username}</p>
