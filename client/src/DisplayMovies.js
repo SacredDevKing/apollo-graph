@@ -3,11 +3,9 @@ import { gql, useQuery, useLazyQuery } from '@apollo/client';
 
 function DisplayMovies() {
   const [movieSearch, setMovieSearch] = useState('');
-  const [fetchMovie, { data: movieSearchData, error: movieError }] =
-    useLazyQuery();
 
   const GET_ALL_MOVIES = gql`
-    query getAllMovies {
+    query GetAllMovies {
       movies {
         id
         title
@@ -23,7 +21,6 @@ function DisplayMovies() {
   const GET_MOVIE_BY_TITLE = gql`
     query GetMovie($title: String!) {
       movie(title: $title) {
-        id
         title
         releaseYear
         genre
@@ -33,6 +30,8 @@ function DisplayMovies() {
     }
   `;
 
+  const [fetchMovie, { data: movieSearchData }] =
+    useLazyQuery(GET_MOVIE_BY_TITLE);
   const { error, loading, data } = useQuery(GET_ALL_MOVIES);
 
   if (error) return 'Something went wrong';
@@ -60,8 +59,26 @@ function DisplayMovies() {
           placeholder='Interstellar...'
           onChange={(e) => setMovieSearch(e.target.value)}
         />
-        <button onClick={fetchMovie}>Fetch Data</button>
-        <div></div>
+        {/* Send graphQL variables */}
+        <button
+          onClick={() => {
+            fetchMovie({
+              variables: {
+                title: movieSearch,
+              },
+            });
+          }}
+        >
+          Fetch Data
+        </button>
+        <div>
+          {movieSearchData && (
+            <div>
+              <h1>MovieName: {movieSearchData.movie.title}</h1>
+              <h1>Release Year: {movieSearchData.movie.releaseYear}</h1>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
