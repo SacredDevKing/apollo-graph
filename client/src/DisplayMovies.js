@@ -17,6 +17,7 @@ const QUERY_ALL_MOVIES = gql`
 const GET_MOVIE_BY_TITLE = gql`
   query Movie($title: String!) {
     movie(title: $title) {
+      id
       title
       releaseYear
       genre
@@ -39,6 +40,8 @@ function DisplayMovies() {
 
   return (
     <div>
+      <label>Search for movie to get more info... </label>
+
       <input
         type='text'
         placeholder='Interstellar...'
@@ -50,7 +53,7 @@ function DisplayMovies() {
         onClick={() => {
           fetchMovie({
             variables: {
-              name: movieSearched,
+              title: movieSearched,
             },
           });
         }}
@@ -59,21 +62,21 @@ function DisplayMovies() {
       </button>
       <div>
         <div>
+          {movieSearchedData && (
+            <div>
+              <h1>MovieName: {movieSearchedData.movie.title}</h1>
+              <p>Release Year: {movieSearchedData.movie.releaseYear}</p>
+              <p>Genre: {movieSearchedData.movie.genre}</p>
+              <p>Awards: {movieSearchedData.movie.awards}</p>
+              <p>Language(s): {movieSearchedData.movie.language}</p>
+            </div>
+          )}
+          {movieError && <h1> There was an error fetching the data</h1>}
           <h1>All Movies</h1>
           {movieData &&
             movieData.movies.map((movie) => {
               return <h3 key={movie.id}>Movie Title: {movie.title}</h3>;
             })}
-
-          {movieSearchedData && (
-            <div>
-              <h1>MovieName: {movieSearchedData.movie.title}</h1>
-              <h1>
-                Year Of Publication: {movieSearchedData.movie.releaseYear}
-              </h1>
-            </div>
-          )}
-          {movieError && <h1> There was an error fetching the data</h1>}
         </div>
       </div>
     </div>
