@@ -14,8 +14,8 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <div className='App'>
-        <DisplayUsers />
         <DisplayMovies />
+        <DisplayUsers />
       </div>
     </ApolloProvider>
   );
