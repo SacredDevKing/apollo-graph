@@ -35,7 +35,7 @@ function DisplayUsers() {
   `;
 
   // Use queries/mutations
-  const { loading, error, data } = useQuery(GET_ALL_USERS);
+  const { loading, error, data, refetch } = useQuery(GET_ALL_USERS);
   const [createUser] = useMutation(CREATE_USER_MUTATION);
   if (error) return <h1>Something went wrong...</h1>;
   if (loading) {
@@ -77,6 +77,9 @@ function DisplayUsers() {
                 createUserInput: { name, country, username, email, age },
               },
             });
+
+            // Update dom w/o page refresh when adding user
+            refetch();
           }}
         >
           Create User

@@ -63,6 +63,7 @@ const typeDefs = gql`
     GERMANY
     ARMENIA
     ARGENTINA
+    BRAZIL
   }
 `;
 
