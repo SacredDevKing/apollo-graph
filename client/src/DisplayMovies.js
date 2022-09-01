@@ -40,6 +40,7 @@ function DisplayMovies() {
 
   return (
     <div>
+      <h1 style={{ borderTop: '4px solid royalblue' }}>All Movies</h1>
       <label>Search for movie to get more info... </label>
 
       <input
@@ -72,10 +73,10 @@ function DisplayMovies() {
             </div>
           )}
           {movieError && <h1> There was an error fetching the data</h1>}
-          <h1>All Movies</h1>
+
           {movieData &&
             movieData.movies.map((movie) => {
-              return <h3 key={movie.id}>Movie Title: {movie.title}</h3>;
+              return <h3 key={movie.title}>Movie Title: {movie.title}</h3>;
             })}
         </div>
       </div>
