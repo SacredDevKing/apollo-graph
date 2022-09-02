@@ -64,6 +64,8 @@ const typeDefs = gql`
     ARMENIA
     ARGENTINA
     BRAZIL
+    UKRAINE
+    RUSSIA
   }
 `;
 
