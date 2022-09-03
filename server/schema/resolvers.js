@@ -14,7 +14,8 @@ const _ = require('lodash');
 const resolvers = {
   Query: {
     // User resolvers
-    users: () => {
+    users: (_, _2, context) => {
+      console.log(context);
       return UsersList;
     },
     user: (_, args, context, info) => {
