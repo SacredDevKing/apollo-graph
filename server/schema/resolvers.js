@@ -17,13 +17,13 @@ const resolvers = {
     users: () => {
       return UsersList;
     },
-    user: (parent, args) => {
+    user: (_, args, context, info) => {
       const id = Number(args.id);
 
       return _.find(UsersList, { id });
     },
     // Movie Resolvers
-    movie: (parent, args) => {
+    movie: (_, args) => {
       const title = args.title;
 
       return _.find(MoviesList, { title });
@@ -33,7 +33,7 @@ const resolvers = {
     },
   },
   User: {
-    favoriteMovies: (parent, args) => {
+    favoriteMovies: () => {
       // Get a users favorite movies if any.
       return _.filter(
         MoviesList,
@@ -43,7 +43,7 @@ const resolvers = {
   },
 
   Mutation: {
-    createUser: (parent, args) => {
+    createUser: (_, args) => {
       // Simulate adding row to DB
       const user = args.input;
       const lastUserId = UsersList[UsersList.length - 1].id;
@@ -67,7 +67,7 @@ const resolvers = {
 
       return updatedUser;
     },
-    deleteUser: (parent, args) => {
+    deleteUser: (_, args) => {
       const id = args.id;
 
       _.remove(UsersList, (user) => user.id === Number(id));
