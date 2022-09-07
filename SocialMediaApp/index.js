@@ -18,6 +18,9 @@ const server = new ApolloServer({
 });
 
 // Listen for our server
-server
-  .listen({ port: 6001 })
+mongoConnect
+  .then(() => {
+    console.log('MongoDB connected successfully...');
+    return server.listen({ port: 6001 });
+  })
   .then(({ url }) => console.log(`🚀  Ready to goooo @ ${url}`));
