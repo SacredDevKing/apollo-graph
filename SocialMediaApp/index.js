@@ -8,8 +8,8 @@ const {
 } = require('apollo-server-core');
 
 // Relative imports
-const typeDefs = require('./typeDefs');
-const resolvers = require('./resolvers');
+const typeDefs = require('./graphql/typeDefs');
+const resolvers = require('./graphql/resolvers/index');
 const mongoConnect = require('./Mongoose/connection');
 
 // Create apollo server

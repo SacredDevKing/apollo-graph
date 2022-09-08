@@ -1,8 +1,8 @@
 // Resolve logic for any query, mutations or subscriptions
 
-const Post = require('./Mongoose/models/Post');
+const Post = require('../../Mongoose/models/Post');
 
-const resolvers = {
+module.exports = {
   Query: {
     async getPosts() {
       try {
@@ -14,5 +14,3 @@ const resolvers = {
     },
   },
 };
-
-module.exports = resolvers;
