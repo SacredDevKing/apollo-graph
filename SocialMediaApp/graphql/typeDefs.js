@@ -9,8 +9,17 @@ const typeDefs = gql`
     username: String!
   }
 
+  type User {
+    id: ID!
+    username: String!
+    password: String!
+    email: String!
+    createdAt: String!
+  }
+
   type Query {
     getPosts: [Post]
+    getUsers: [User]
   }
 `;
 
