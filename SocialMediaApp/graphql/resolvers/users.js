@@ -13,4 +13,11 @@ module.exports = {
       }
     },
   },
+  Mutation: {
+    async register(_, args, context, info) {
+      // TODO: Validate data
+      // TODO: Check for unique user in db
+      // TODO: hash pw before storing + create auth token
+    },
+  },
 };
