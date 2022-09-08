@@ -1,10 +1,13 @@
 // Make available throughout app
 require('dotenv').config();
 
+// Dep imports
 const { ApolloServer } = require('apollo-server');
 const {
   ApolloServerPluginLandingPageLocalDefault,
 } = require('apollo-server-core');
+
+// Relative imports
 const typeDefs = require('./typeDefs');
 const resolvers = require('./resolvers');
 const mongoConnect = require('./Mongoose/connection');
