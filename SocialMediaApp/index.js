@@ -1,7 +1,7 @@
 // Make available throughout app
 require('dotenv').config();
 
-const { ApolloServer, gql } = require('apollo-server');
+const { ApolloServer } = require('apollo-server');
 const {
   ApolloServerPluginLandingPageLocalDefault,
 } = require('apollo-server-core');
@@ -9,6 +9,7 @@ const typeDefs = require('./typeDefs');
 const resolvers = require('./resolvers');
 const mongoConnect = require('./Mongoose/connection');
 
+// Create apollo server
 const server = new ApolloServer({
   typeDefs,
   resolvers,
@@ -17,7 +18,7 @@ const server = new ApolloServer({
   plugins: [ApolloServerPluginLandingPageLocalDefault({ embed: true })],
 });
 
-// Listen for our server
+// Listen for our server and connect mongo db
 mongoConnect
   .then(() => {
     console.log('MongoDB connected successfully...');
