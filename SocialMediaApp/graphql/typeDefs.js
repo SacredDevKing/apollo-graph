@@ -18,10 +18,10 @@ const typeDefs = gql`
   }
 
   input RegisterInput {
-    username: String!,
-    password: String!,
-    email: String!,
-    confirmPassword: String!,
+    username: String!
+    password: String!
+    email: String!
+    confirmPassword: String!
   }
 
   type Query {
@@ -29,9 +29,9 @@ const typeDefs = gql`
     getUsers: [User]
   }
 
-  type Mutation {
-    register(registerInput: RegisterInput): User! {}
-  }
+  # type Mutation {
+  #   register(registerInput: RegisterInput): User! {}
+  # }
 `;
 
 module.exports = typeDefs;
