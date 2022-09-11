@@ -4,16 +4,6 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { UserInputError } = require('apollo-server');
 
-const errorIfMatchingUserExists = async (username, email) => {
-  if ((await User.findOne({ username })) || (await User.findOne({ email })))
-    throw new UserInputError('Failed to register user', {
-      errors: {
-        username: 'This username is taken',
-        email: 'This email is taken',
-      },
-    });
-};
-
 module.exports = {
   Query: {
     async getUsers() {
@@ -31,7 +21,13 @@ module.exports = {
       { registerUserInput: { username, email, password, confirmPassword } }
     ) {
       // Bail early if we find duplicate user w/ uname || email - err msgs to be used on front end later
-      return errorIfMatchingUserExists(username, email);
+      if ((await User.findOne({ username })) || (await User.findOne({ email })))
+        throw new UserInputError('Failed to register user', {
+          errors: {
+            username: 'This username is taken',
+            email: 'This email is taken',
+          },
+        });
 
       // Hash pw before storing + create auth token
       password = await bcrypt.hash(password, 12);
