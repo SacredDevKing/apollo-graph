@@ -31,6 +31,7 @@ const typeDefs = gql`
 
   type Mutation {
     register(registerUserInput: RegisterUserInput): User!
+    login(username: String!, password: String!): User!
   }
 `;
 

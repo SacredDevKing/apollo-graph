@@ -3,7 +3,20 @@ const User = require('../../Mongoose/models/User');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { UserInputError } = require('apollo-server');
-const { validateRegisterInput } = require('../../util/validators');
+const {
+  validateRegisterInput,
+} = require('../../util/validators/userRegistrationValidator');
+const { validateLoginInput } = require('../../util/validators/loginValidator');
+
+// Helper functions
+function createJwt(user) {
+  // Create new token for user
+  return jwt.sign(
+    { id: user.id, email: user.email, username: user.username },
+    process.env.JWT_SECRET_KEY,
+    { expiresIn: '1h' }
+  );
+}
 
 module.exports = {
   Query: {
@@ -52,16 +65,36 @@ module.exports = {
       // Save user to db
       const result = await newUser.save();
 
-      // Create new token for user
-      const token = jwt.sign(
-        { id: result.id, email: result.email, username: result.username },
-        process.env.JWT_SECRET_KEY,
-        { expiresIn: '1h' }
-      );
+      // Create token
+      const token = createJwt(result);
 
       return {
         ...result._doc,
         id: result._id,
+        token,
+      };
+    },
+    async login(_, { username, password }) {
+      const { valid, errors } = validateLoginInput(username, password);
+      const user = await User.findOne({ username });
+      if (!user) {
+        errors.generic = 'User not found';
+        throw new UserInputError('User not found', { errors });
+      } else {
+        // Compare input to user pw
+        const match = await bcrypt.compare(password, user.password);
+        if (!match) {
+          errors.generic = 'Incorrect credentials';
+          throw new UserInputError('Incorrect credentials', { errors });
+        }
+      }
+
+      // Credentials are good - let's give em a token
+      const token = createJwt(user);
+
+      return {
+        ...user._doc,
+        id: user._id,
         token,
       };
     },
