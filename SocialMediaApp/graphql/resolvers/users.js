@@ -2,6 +2,17 @@
 const User = require('../../Mongoose/models/User');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const { UserInputError } = require('apollo-server');
+
+const errorIfMatchingUserExists = async (username, email) => {
+  if ((await User.findOne({ username })) || (await User.findOne({ email })))
+    throw new UserInputError('Failed to register user', {
+      errors: {
+        username: 'This username is taken',
+        email: 'This email is taken',
+      },
+    });
+};
 
 module.exports = {
   Query: {
@@ -15,12 +26,16 @@ module.exports = {
     },
   },
   Mutation: {
-    async register(_, { registerUserInput }, context, info) {
-      // 1. Pull descruted values from input
-      let { username, email, password, confirmPassword } = registerUserInput;
-      // 2. hash pw before storing + create auth token
+    async register(
+      _,
+      { registerUserInput: { username, email, password, confirmPassword } }
+    ) {
+      // Bail early if we find duplicate user w/ uname || email - err msgs to be used on front end later
+      return errorIfMatchingUserExists(username, email);
+
+      // Hash pw before storing + create auth token
       password = await bcrypt.hash(password, 12);
-      //3. Form user obj form mongoose model
+      // Form user obj form mongoose model
       const newUser = new User({
         email,
         username,
@@ -28,10 +43,10 @@ module.exports = {
         createdAt: new Date().toISOString(),
       });
 
-      // 4. Save user to db
+      // Save user to db
       const result = await newUser.save();
 
-      // 5. Create new token for user
+      // Create new token for user
       const token = jwt.sign(
         { id: result.id, email: result.email, username: result.username },
         process.env.JWT_SECRET_KEY,
