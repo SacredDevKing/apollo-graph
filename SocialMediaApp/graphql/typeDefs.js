@@ -17,11 +17,11 @@ const typeDefs = gql`
     createdAt: String!
   }
 
-  input RegisterInput {
+  input RegisterUserInput {
     username: String!
     password: String!
-    email: String!
     confirmPassword: String!
+    email: String!
   }
 
   type Query {
@@ -29,9 +29,9 @@ const typeDefs = gql`
     getUsers: [User]
   }
 
-  # type Mutation {
-  #   register(registerInput: RegisterInput): User! {}
-  # }
+  type Mutation {
+    register(registerUserInput: RegisterUserInput): User!
+  }
 `;
 
 module.exports = typeDefs;
