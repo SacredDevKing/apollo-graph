@@ -19,12 +19,11 @@ module.exports.validateRegisterInput = (
     }
   }
 
-  if (!password.match(pwRegex))
-    password.email =
+  if (!password.match(pwRegex) || password === '')
+    errors.password =
       'Password contain minimum 10 characters with 1 upper and 1 lower case letter and 1 special character';
 
-  if (password === '') errors.password = 'You must provide a password';
-  else if (password !== confirmPassword)
+  if (password !== confirmPassword)
     errors.confirmPassword = 'Passwords must match';
 
   return {
