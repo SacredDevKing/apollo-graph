@@ -80,7 +80,8 @@ module.exports = {
       if (!valid) throw new UserInputError('Errors', { errors });
 
       // Look for user
-      if (!(await User.findOne({ username }))) {
+      let user = await User.findOne({ username });
+      if (!user) {
         errors.generic = 'User not found';
         throw new UserInputError('User not found', { errors });
       } else {
