@@ -17,16 +17,16 @@ const typeDefs = gql`
     createdAt: String!
   }
 
+  type Query {
+    getPosts: [Post]
+    getUsers: [User]
+  }
+
   input RegisterUserInput {
     username: String!
     password: String!
     confirmPassword: String!
     email: String!
-  }
-
-  type Query {
-    getPosts: [Post]
-    getUsers: [User]
   }
 
   type Mutation {

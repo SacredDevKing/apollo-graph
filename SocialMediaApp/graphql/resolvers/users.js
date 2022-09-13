@@ -43,7 +43,7 @@ module.exports = {
 
       if (!valid) throw new UserInputError('UserInputErrors:', { errors });
 
-      // Bail early if we find duplicate user w/ uname || email - err msgs to be used on front end later
+      // Bail early if we find duplicate uname || email - err msgs to be used on front end later
       if ((await User.findOne({ username })) || (await User.findOne({ email })))
         throw new UserInputError('Failed to register user', {
           errors: {
@@ -54,6 +54,7 @@ module.exports = {
 
       // Hash pw before storing + create auth token
       password = await bcrypt.hash(password, 12);
+
       // Form user obj form mongoose model
       const newUser = new User({
         email,
@@ -77,14 +78,14 @@ module.exports = {
     async login(_, { username, password }) {
       const { valid, errors } = validateLoginInput(username, password);
       if (!valid) throw new UserInputError('Errors', { errors });
-      const user = await User.findOne({ username });
-      if (!user) {
+
+      // Look for user
+      if (!(await User.findOne({ username }))) {
         errors.generic = 'User not found';
         throw new UserInputError('User not found', { errors });
       } else {
-        // Compare input to user pw
-        const match = await bcrypt.compare(password, user.password);
-        if (!match) {
+        // Error out of pw is invalid
+        if (!(await bcrypt.compare(password, user.password))) {
           errors.generic = 'Incorrect credentials';
           throw new UserInputError('Incorrect credentials', { errors });
         }

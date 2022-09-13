@@ -27,4 +27,4 @@ mongoConnect
     console.log('MongoDB connected successfully...');
     return server.listen({ port: 6001 });
   })
-  .then(({ url }) => console.log(`🚀  Ready to goooo @ ${url}`));
+  .then(({ url }) => console.log(`🚀  Blast off @ ${url}`));
