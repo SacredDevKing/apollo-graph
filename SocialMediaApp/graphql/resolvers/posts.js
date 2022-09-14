@@ -22,7 +22,9 @@ module.exports = {
     },
   },
   Mutation: {
-    async createPost() {},
+    async createPost(_, { body }, context) {
+      //
+    },
     async deletePost(_, { postId }) {},
   },
 };

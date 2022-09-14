@@ -16,6 +16,7 @@ const mongoConnect = require('./Mongoose/connection');
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  context: ({ req }) => ({ req }),
   csrfPrevention: true,
   cache: 'bounded',
   plugins: [ApolloServerPluginLandingPageLocalDefault({ embed: true })],
