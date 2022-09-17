@@ -4,13 +4,14 @@ const { AuthenticationError } = require('apollo-server');
 module.exports = (context) => {
   const authHeader = context.req.headers.authorization;
   console.log(authHeader);
-  // Get token
-  const token = authHeader.split('Bearer ')[1];
 
   if (!authHeader) {
     // Bail out early here
     throw new Error('Authorization header is missing');
   }
+
+  // Get token if auth header exists
+  const token = authHeader.split('Bearer ')[1];
 
   if (!token) {
     throw new Error('Auth token must be formatted as: Bearer [token]');

@@ -34,8 +34,8 @@ module.exports = {
         body,
         user: user.id,
         username: user.username,
-        createdAt: new Date.toIsoString(),
-        updatedAt: new Date.toIsoString(),
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
       });
 
       // Use mongoose DB save method

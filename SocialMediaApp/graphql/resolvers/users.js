@@ -85,14 +85,14 @@ module.exports = {
         errors.generic = 'User not found';
         throw new UserInputError('User not found', { errors });
       } else {
-        // Error out of pw is invalid
+        // Error if pw is invalid
         if (!(await bcrypt.compare(password, user.password))) {
           errors.generic = 'Incorrect credentials';
           throw new UserInputError('Incorrect credentials', { errors });
         }
       }
 
-      // Credentials are good - let's give em a token
+      // Credentials are good - let's give em a token w/ bearer included
       const token = createJwt(user);
 
       return {
