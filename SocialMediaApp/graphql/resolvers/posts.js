@@ -1,6 +1,7 @@
 // Resolve logic for any query, mutations or subscriptions
 const Post = require('../../Mongoose/models/Post');
 const checkAuth = require('../../util/validators/check-auth');
+const { AuthenticationError } = require('apollo-server');
 
 module.exports = {
   Query: {
@@ -41,6 +42,23 @@ module.exports = {
       // Use mongoose DB save method
       return await newPost.save();
     },
-    async deletePost(_, { postId }) {},
+    async deletePost(_, { postId }, context) {
+      const user = checkAuth(context);
+
+      try {
+        const post = await Post.findById(postId);
+        if (!post) throw Error('No post found');
+
+        if (user.username !== post.username)
+          throw new AuthenticationError('Action is not permitted');
+
+        // Post exists and belongs to user - let's delete
+        await post.delete();
+
+        return 'Post deleted successfully';
+      } catch (error) {
+        throw new Error(`Something went wrong: ${error}`);
+      }
+    },
   },
 };
