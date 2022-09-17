@@ -1,5 +1,6 @@
 // Resolve logic for any query, mutations or subscriptions
 const Post = require('../../Mongoose/models/Post');
+const checkAuth = require('../../util/validators/check-auth');
 
 module.exports = {
   Query: {
@@ -23,7 +24,22 @@ module.exports = {
   },
   Mutation: {
     async createPost(_, { body }, context) {
-      //
+      // Find/validate users token + return user
+      const user = checkAuth(context);
+
+      console.log({ USERR: user });
+
+      // User is able to create post
+      const newPost = new Post({
+        body,
+        user: user.id,
+        username: user.username,
+        createdAt: new Date.toIsoString(),
+        updatedAt: new Date.toIsoString(),
+      });
+
+      // Use mongoose DB save method
+      return await newPost.save();
     },
     async deletePost(_, { postId }) {},
   },
