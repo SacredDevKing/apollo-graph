@@ -15,8 +15,8 @@ module.exports = {
     },
     async getPosts() {
       try {
-        // Beings back all posts
-        return await Post.find();
+        // Beings back all posts in DESC order
+        return await Post.find().sort({ createdAt: -1 });
       } catch (error) {
         throw new Error(`Error: ${error}`);
       }
