@@ -28,7 +28,7 @@ module.exports = {
       // Find/validate users token + return user
       const user = checkAuth(context);
 
-      console.log({ USERR: user });
+      console.log({ Post_Created_By: user });
 
       // User is able to create post
       const newPost = new Post({

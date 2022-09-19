@@ -7,6 +7,23 @@ const typeDefs = gql`
     createdAt: String!
     updatedAt: String
     username: String!
+    comments: [Comment]!
+    likes: [Like]!
+  }
+
+  type Comment {
+    id: ID!
+    body: String!
+    username: String!
+    createdAt: String!
+    updatedAt: String!
+  }
+
+  type Like {
+    id: ID!
+    username: String!
+    createdAt: String!
+    updatedAt: String!
   }
 
   type User {
