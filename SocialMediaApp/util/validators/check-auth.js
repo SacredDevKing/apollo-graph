@@ -3,7 +3,6 @@ const { AuthenticationError } = require('apollo-server');
 
 module.exports = (context) => {
   const authHeader = context.req.headers.authorization;
-  console.log(authHeader);
 
   if (!authHeader) {
     // Bail out early here
@@ -19,7 +18,7 @@ module.exports = (context) => {
 
   // If all is well then verify the users by their token
   try {
-    // Verify user
+    // return a user w/ matching tokens
     return jwt.verify(token, process.env.JWT_SECRET_KEY);
   } catch (error) {
     console.error(error);
