@@ -1,6 +1,6 @@
 const Post = require('../../Mongoose/models/Post');
 const checkAuth = require('../../util/validators/check-auth');
-const { UserInputError } = require('apollo-server');
+const { UserInputError, AuthenticationError } = require('apollo-server');
 
 module.exports = {
   Mutation: {
@@ -32,7 +32,29 @@ module.exports = {
       return post;
     },
     async deleteComment(_, { postId, commentId }, context) {
-      // TODO: delete comment
+      const post = await Post.findById(postId);
+      const { username } = checkAuth(context);
+      // Find comment and delete it by it's index
+      const commentIndex = post.comments.findIndex(
+        (com) => com.id === commentId
+      );
+
+      // Series of bail out checks
+      if (!post) throw new UserInputError('Post was not found');
+      if (!username) throw new UserInputError('User was not found');
+      if (commentIndex < 0) throw Error('Comment was not found');
+
+      if (post.comments[commentIndex].username !== username) {
+        throw new AuthenticationError(
+          'You are not authorized to delete this comment'
+        );
+      }
+
+      // The owner of the comment CAN delete
+      post.comments.splice(commentIndex, 1);
+      await post.save();
+
+      return post;
     },
     async likePost(_, { postId }, context) {
       // TODO: like post
