@@ -43,7 +43,6 @@ module.exports = {
       if (!post) throw new UserInputError('Post was not found');
       if (!username) throw new UserInputError('User was not found');
       if (commentIndex < 0) throw Error('Comment was not found');
-
       if (post.comments[commentIndex].username !== username) {
         throw new AuthenticationError(
           'You are not authorized to delete this comment'
@@ -57,7 +56,27 @@ module.exports = {
       return post;
     },
     async likePost(_, { postId }, context) {
-      // TODO: like post
+      const { username } = checkAuth(context);
+      const post = await Post.findById(postId);
+
+      // Bail if there is no post
+      if (!post) throw new UserInputError('Post was not found');
+
+      if (post.likes.find((like) => like.username === username)) {
+        // Post has already ben liked thus unlike it
+        post.likes = post.likes.filter((like) => like.username !== username);
+      } else {
+        // Has not been liked
+        post.likes.push({
+          username,
+          createdAt: new Date().toISOString(),
+        });
+      }
+
+      // Persist updated post
+      await post.save();
+
+      return post;
     },
   },
 };

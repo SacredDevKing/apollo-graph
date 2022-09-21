@@ -95,6 +95,8 @@ module.exports = {
       // Credentials are good - let's give em a token w/ bearer included
       const token = createJwt(user);
 
+      console.log({ TOKEN: token });
+
       return {
         ...user._doc,
         id: user._id,
