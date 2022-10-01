@@ -21,12 +21,15 @@ module.exports = {
       } catch (error) {
         throw new Error(`Error: ${error}`);
       }
-    },//
+    }, //
   },
   Mutation: {
     async createPost(_, { body }, context) {
       // Find/validate users token + return user
       const user = checkAuth(context);
+
+      // Make sure body has content
+      if (body.trim() === '') throw new Error('Post body must not be empty');
 
       console.log({ Post_Created_By: user });
 
