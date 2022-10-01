@@ -21,7 +21,7 @@ module.exports = {
       } catch (error) {
         throw new Error(`Error: ${error}`);
       }
-    },
+    },//
   },
   Mutation: {
     async createPost(_, { body }, context) {

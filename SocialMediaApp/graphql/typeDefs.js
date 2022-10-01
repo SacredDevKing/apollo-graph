@@ -54,9 +54,9 @@ const typeDefs = gql`
     deletePost(postId: ID!): String!
     createComment(postId: String!, body: String!): Post!
     # Pass post id in case I want to implement cascading deletes
-    deleteComment(postId: String!, commentId: ID!): Post!
+    deleteComment(postId: ID!, commentId: ID!): Post!
     # This mutation can work as a toggle like/unlike
-    likePost(postId: String!): Post!
+    likePost(postId: ID!): Post!
   }
 `;
 

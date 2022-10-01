@@ -63,10 +63,10 @@ module.exports = {
       if (!post) throw new UserInputError('Post was not found');
 
       if (post.likes.find((like) => like.username === username)) {
-        // Post has already ben liked thus unlike it
+        // Post has already been liked thus unlike it
         post.likes = post.likes.filter((like) => like.username !== username);
       } else {
-        // Has not been liked
+        // Has not been liked, thus like the post
         post.likes.push({
           username,
           createdAt: new Date().toISOString(),
@@ -76,6 +76,7 @@ module.exports = {
       // Persist updated post
       await post.save();
 
+      // Send post as response
       return post;
     },
   },
